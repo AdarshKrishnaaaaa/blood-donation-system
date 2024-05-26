@@ -1,0 +1,63 @@
+html,body
+{
+    font-family: Khand;
+}
+
+.hidden { display: none; }
+
+.banner {
+    width: 100%;
+    height: auto;
+    min-height: 900px;
+    background-image: url('/media/banner.jpg');
+    background-size: cover;
+}
+
+.banner .motto {
+    width: 100%;
+    height: auto;
+    margin-top: 30%;
+    font-family: "Raleway Dark";
+    font-size: 36pt;
+    color: #333;
+}
+
+.banner .motto button { 
+    font-family: Khand;
+}
+
+.navbar {
+    font-family: Khand;
+    text-shadow: 1px 1px 5px #FFFFFF;
+}
+
+.nav-link {
+    font-size: 15pt;
+}
+
+.navbar-brand {
+    font-family: "Raleway Dark";
+    font-size: 16pt;
+    line-height: 12px;
+    color: #454545;
+}
+
+.navbar-brand img {
+    float: left;
+    width: 46px;
+    height: 46px;
+    margin-right: 5px;
+}
+
+.navbar-brand small {
+    font-size: 9pt;
+    color: #333;
+}
+
+.tile h1 {
+    font-size: 45pt;
+}
+
+.tile h5 {
+    font-size: 17pt;
+}

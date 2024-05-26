@@ -1,0 +1,199 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(
+            content="width=device-width, initial-scale=1" 
+            name="viewport"
+            )
+        title DonateRED Blood Camp - Sign Up
+        link(
+            rel="stylesheet" 
+            href="/bootstrap/css/bootstrap.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/fonts.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/materialdesignicons.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/custom/css/common.css"
+            )
+    body
+        span#resp.hidden= resp
+
+        #MessageModal.modal(tabindex='-1')
+            .modal-dialog
+                .modal-content
+                .modal-header(style="background-color: #e7e7e7;")
+                    h5.modal-title Message Caption
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body(style="background-color: #e7e7e7;")
+                    p Message Content
+                .modal-footer(style="background-color: #e7e7e7;")
+                    button#btnMsgModalClose.btn.btn-primary(type='button' data-bs-dismiss='modal') Close
+
+        #ErrorBoxModal.modal(tabindex='-1')
+            .modal-dialog
+                .modal-content
+                .modal-header.bg-danger
+                    h5.modal-title Message Caption
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body(style="background-color: #e7e7e7;")
+                    p Message Content
+                .modal-footer(style="background-color: #e7e7e7;")
+                    button#btnErrorModalClose.btn.btn-danger(type='button' data-bs-dismiss='modal') Close
+
+        .banner
+            nav.navbar.navbar-expand-lg(style="background-color: rgba(0, 0, 0, 0)")
+                .container
+                    a.navbar-brand(href="#")
+                        img(
+                            alt="nisha logo" 
+                            src="/media/bloodcamp-logo.svg"
+                            )
+                        br
+                        | Donate 
+                        b RED
+                        br
+                        small Blood Camp
+                    button.navbar-toggler(
+                        aria-label="Toggle navigation" 
+                        aria-expanded="false" 
+                        aria-controls="navbarSupportedContent" 
+                        data-bs-target="#navbarSupportedContent" 
+                        data-bs-toggle="collapse" 
+                        type="button"
+                        )
+                        span.navbar-toggler-icon
+                    #navbarSupportedContent.collapse.navbar-collapse
+                        ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+                            li.nav-item
+                                a.nav-link.active(href="#" aria-current="page") Home
+                            li.nav-item
+                                a.nav-link(href="#") About Us
+                            li.nav-item
+                                a.nav-link(href="#") Programmes
+                            li.nav-item
+                                a.nav-link(href="#") Contact Us
+                            li.nav-item.dropdown
+                                a.nav-link.dropdown-toggle(
+                                    aria-expanded="false" 
+                                    data-bs-toggle="dropdown" 
+                                    role="button" 
+                                    href="#"
+                                    ) Already have an account
+                                ul.dropdown-menu.dropdown-menu-end
+                                    li
+                                        a.dropdown-item(href="login") Login
+            .container
+                .row
+                    .col-lg-12
+                        form#frmSignUp(
+                            onsubmit="return ValidateSignup();" 
+                            action="/user/signup" 
+                            method="post"
+                            )
+                            .card.shadow-sm(style="margin-top: 2%")
+                                .card-header.p-3
+                                    h4 Sign Up
+                                .card-body
+                                    .row
+                                        .col-sm-6.pe-3(style="border-right: 1px solid #ccc;")
+                                            .form-group.mt-3.mb-3
+                                                label.form-label(for="tbFullName") Fullname
+                                                input#tbFullname.form-control(
+                                                    placeholder="e.g: Sumesh Kumar" 
+                                                    type="text" name="fname"
+                                                    )
+                                                .invalid-feedback Fullname is required!
+                                            .form-group.mt-2.mb-2
+                                                label.form-label(for="tbMobile") Mobile
+                                                input#tbMobile.form-control(
+                                                    placeholder="e.g: 9876543210" 
+                                                    type="text"
+                                                    name="mobile"
+                                                    )
+                                                .form-text Your mobile number will be your login id.
+                                                .invalid-feedback Use your mobile phone to login.
+                                            .form-group.mb-2
+                                                label.form-label(for="tbPasswd") Password
+                                                input#tbPasswd.form-control(
+                                                    name="passwd" 
+                                                    type="password"
+                                                    placeholder="The password should be 6 characters or more, atleast 1 capital letter, 1 small letter, 1 digit, 1 special symbol"
+                                                    )
+                                                .invalid-feedback Password is required!
+                                            .form-group.mb-2
+                                                label.form-label(for="tbPasswd") Confirm Password
+                                                input#tbPasswd1.form-control(
+                                                    name="passwd1" 
+                                                    type="password"
+                                                    placeholder="Identical to the password above."
+                                                    )
+                                                .invalid-feedback Passwords should match!
+                                            .form-group.mb-2
+                                                label.form-label(for="tbDob") Date of birth
+                                                input#tbDob.form-control(
+                                                    name="dob" 
+                                                    type="date"
+                                                    )
+                                                #lblAge.form-text Select your date of birth to determine your age.
+                                                .invalid-feedback You must be 18 or above to participate in the blood camp.
+                                            .form-group.mb-2
+                                                label.form-label(for="ddGender") Gender
+                                                select#ddGender.form-control(name="gender")
+                                                    option(value="-1") --Select Gender--
+                                                    option(value="Male") Male
+                                                    option(value="Female") Female
+                                                .invalid-feedback Gender should be selected!
+                                        .col-sm-6
+                                            .form-group.mt-3.mb-2
+                                                label.form-label(for="ddBlood") Blood group
+                                                select#ddBlood.form-select(name="blood")
+                                                    option(value="-1") --Select Blood Group--
+                                                    option(value="A+") A +ve
+                                                    option(value="A-") A -ve
+                                                    option(value="B+") B +ve
+                                                    option(value="B-") B -ve
+                                                    option(value="O+") O +ve
+                                                    option(value="O-") O -ve
+                                                    option(value="AB+") AB +ve
+                                                    option(value="AB-") AB -ve
+                                                .invalid-feedback Please select a blood group.
+                                            .form-group.mb-2
+                                                label.form-label(for="tbWeight") Weight
+                                                input#tbWeight.form-control(
+                                                    name="weight" 
+                                                    type="number"
+                                                    )
+                                                .invalid-feedback Weight is required!
+                                            .form-group.mb-2
+                                                label.form-label(for="tbAddress") Address
+                                                textarea#tbAddress.form-control(
+                                                    style="resize: none;" 
+                                                    name="address"
+                                                    )
+                                                .invalid-feedback Age is required!
+                                            .form-group.mb-2
+                                                label.form-label(for="ddCity") City
+                                                select#ddCity.form-select(name="city")
+                                                    option(value="-1") --Select City--
+                                                .invalid-feedback Select a city or nearby city.
+                                            .form-check.mb-2.mt-5
+                                                input#flexCheckDefault.form-check-input(type="checkbox")
+                                                label.form-check-label(for="flexCheckDefault") I agree to the terms and conditions of the Blood Camp.
+                                                .invalid-feedback You must agree to the terms and conditions of Nisha Blood Camp to be a part of it.
+                                .card-footer
+                                    .form-group
+                                        button.btn.btn-primary.btn-lg.w-25.float-end(type="submit" name="submit_add")
+                                            span.mdi.mdi-account-plus
+                                            | Sign Up
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/bs5_modals.js")
+        script(src="/custom/js/user_signup.js")

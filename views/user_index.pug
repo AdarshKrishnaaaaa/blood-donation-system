@@ -1,0 +1,55 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(
+            content="width=device-width, initial-scale=1" 
+            name="viewport"
+            )
+        title DonateRED
+        link(
+            rel="stylesheet" 
+            href="/bootstrap/css/bootstrap.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/fonts.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/materialdesignicons.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/custom/css/common.css"
+            )
+    body
+        .banner
+            include includes/user_navbar.pug
+            .container
+                .row
+                    .col-lg-8.col-md-8.col-sm-6.col-xs-12
+                        .motto
+                            | Share the Gift of Life: Unite, Donate, Save.
+                            br
+                            button.btn.btn-primary.btn-lg Donate
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12
+                        .card(style="margin-top: 27%;")
+                            .card-body.d-flex.flex-column.justify-content-center.align-items-center.p-3(style="height: 400px;")
+                                a.navbar-brand(
+                                    style="margin-left: -20px; margin-bottom: 50px;" 
+                                    href="#"
+                                    )
+                                    img(
+                                        alt="nisha logo" 
+                                        src="/media/bloodcamp-logo.svg"
+                                        )
+                                    br
+                                    | DonateRED
+                                    br
+                                    small Blood Camp
+                                h4 Start here.
+                                a.btn.btn-success.btn-lg.w-50.m-2(href="donate") Donate
+                                a.btn.btn-danger.btn-lg.w-50.m-2(href="/user/requests") Request
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")

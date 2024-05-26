@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        title DonateRED - Admin Dashboard
+        link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/fonts/fonts.css")
+        link(rel="stylesheet" href="/fonts/materialdesignicons.min.css")
+        link(rel="stylesheet" href="/custom/css/common.css")
+    body
+        .banner
+            include includes/admin_navbar.pug
+            .container
+                .row
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12 
+                        .tile.card.mt-5.bg-success.text-white.border.border-0.rounded-4
+                            .card-body
+                                h1#lblUserCount 1024
+                                h5 Users
+                                a.btn.btn-light.btn-sm.mt-4.w-100(href="#") View More...
+
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12 
+                        .tile.card.mt-5.bg-danger.text-white.border.border-0.rounded-4
+                            .card-body
+                                h1#lblPendingCount 3124
+                                h5 Pending Applications
+                                a.btn.btn-light.btn-sm.mt-4.w-100(href="#") View More...
+
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12 
+                        .tile.card.mt-5.bg-warning.text-dark.border.border-0.rounded-4
+                            .card-body
+                                h1#lblAcceptedCount 341
+                                h5 Accepted
+                                a.btn.btn-light.btn-sm.mt-4.w-100(href="#") View More...
+                    
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/admin_index.js")

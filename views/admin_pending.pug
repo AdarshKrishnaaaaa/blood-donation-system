@@ -1,0 +1,113 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        title DonateRED - Admin Dashboard
+        link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/fonts/fonts.css")
+        link(rel="stylesheet" href="/fonts/materialdesignicons.min.css")
+        link(rel="stylesheet" href="/custom/css/common.css")
+    body
+        span#resp.hidden= resp 
+        span#plist.hidden= pendings
+        include includes/bs5_modals.pug 
+
+        form#frmApprove(method="post" action="/admin/pending")
+            input#hdnDonID(type="hidden" name="donid")
+            #ReviewModal.modal(tabindex="-1")
+                .modal-dialog.modal-lg
+                    .modal-content
+                        .modal-header
+                            h5.modal-title Review Application
+                            button.btn-close(aria-label="Close" data-bs-dismiss="modal" type="button")
+                        .modal-body
+                            .row 
+                                .col-sm-6 
+                                    table.table.table-striped 
+                                        tbody 
+                                            tr 
+                                                td Applicant had food in the last 4 hours.
+                                                td#ds_eat4h &nbsp;
+                                            tr 
+                                                td Applicant slept for 6 hours or more.
+                                                td#ds_slp6h &nbsp;
+                                            tr 
+                                                td Applicant had a tattoo in the past 1 week 
+                                                td#ds_tat1w &nbsp;
+                                            tr 
+                                                td Applicant consumed antibiotics in the past 1 week 
+                                                td#ds_anb1w &nbsp;
+                                            tr
+                                                td Applicant consumed aspirin in the past 1 week
+                                                td#ds_asp1w &nbsp;
+                                            tr 
+                                                td Applicant had a tetanus shot in the past 1 week 
+                                                td#ds_tt1w &nbsp;
+                                            tr 
+                                                td Applicant had been infected with fever/cold/cough during the past one week?
+                                                td#ds_fev1w
+                                            tr 
+                                                td Applicant did any activity that may lead to him/her having AIDS 
+                                                td#ds_aidsprb &nbsp;
+                                            tr 
+                                                td Applicant takes any medication regularly 
+                                                td#ds_cntmed &nbsp;
+
+                                .col-sm-6 
+                                    table.table.table-striped 
+                                        tbody
+                                            tr 
+                                                td Applicant consumes alcoholic/narcotic substances
+                                                td#ds_sbsabs &nbsp;
+                                            tr 
+                                                td Applicant had jaundice in the past 1 year.
+                                                td#ds_jndc1y &nbsp;
+                                            tr 
+                                                td Applicant has been outside Kerala for the last 3 months.
+                                                td#ds_osklm3 &nbsp;
+                                            tr 
+                                                td Applicant has unhealed wounds/injuries. 
+                                                td#ds_uhinj &nbsp;
+                                            tr.female 
+                                                td Applicant is having his menstruation/period. 
+                                                td#ds_mnsactive &nbsp;
+                                            tr.female  
+                                                td Applicant had a baby in the past 1 year.
+                                                td#ds_bby1y &nbsp;
+                                            tr.female  
+                                                td Applicant is pregnant at the moment.
+                                                td#ds_prgnt &nbsp;
+                                            tr.female  
+                                                td Applicant had an abortion in the last 6 months.
+                                                td#ds_abrt6m &nbsp;
+                                            tr 
+                                                td Applicant had undergone a surgery in the last 12 months.
+                                                td#ds_srg12m
+
+                        .modal-footer
+                            button.btn.btn-secondary(data-bs-dismiss="modal" type="button") Close
+                            button.btn.btn-danger(type="submit" name="submit_reject") Reject
+                            button.btn.btn-success(type="submit" name="submit_approve") Approve
+
+        .banner
+            include includes/admin_navbar.pug
+            .container
+                .row
+                    .card.mt-5 
+                        .card-body 
+                            h2 Pending Applications
+                            table#tblPendings.table.table-striped.mt-3(style="width:100%")
+                                thead
+                                    tr
+                                        th Name
+                                        th Blood Type
+                                        th Units
+                                        th Status
+                                        th Actions
+                                tbody
+                    
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/bs5_modals.js")
+        script(src="/custom/js/admin_pending.js")

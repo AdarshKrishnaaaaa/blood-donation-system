@@ -1,0 +1,85 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        title DonateRED
+        link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
+        link(
+            rel="stylesheet" 
+            href="/fonts/fonts.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/materialdesignicons.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/custom/css/common.css"
+            )
+    body
+        span#resp.hidden= resp
+        .banner
+            include includes/bs5_modals.pug
+            include includes/user_navbar.pug
+
+            form#frmAdd(method="post" action="/user/requests")
+                #AddModal.modal(tabindex="-1")
+                    .modal-dialog
+                        .modal-content
+                            .modal-header
+                                h5.modal-title Add Request
+                                button.btn-close(
+                                aria-label="Close" 
+                                data-bs-dismiss="modal" 
+                                type="button"
+                                )
+                            .modal-body
+                                .form-group.mt-2 
+                                    label.form-label(for="tbDesc")
+                                    textarea#tbDesc.form-control(name="desc")
+                                    .invalid-feedback Description required! 
+                                .form-group.mt-2 
+                                    label.form-label(for="ddBlood") Blood group
+                                    select#ddBlood.form-select(name="blood")
+                                        option(value="-1") --Select Blood Group--
+                                        option(value="A+") A +ve
+                                        option(value="A-") A -ve
+                                        option(value="B+") B +ve
+                                        option(value="B-") B -ve
+                                        option(value="O+") O +ve
+                                        option(value="O-") O -ve
+                                        option(value="AB+") AB +ve
+                                        option(value="AB-") AB -ve
+                                    .invalid-feedback Please select a blood group.
+                                .form-group.mt-2 
+                                    label.form-label(for="tbUnits") Units
+                                    input#tbWeight.form-control(name="units" type="number")
+                                    .invalid-feedback Units is required!
+                                
+                            .modal-footer
+                                button.btn.btn-secondary(data-bs-dismiss="modal" type="button") Close
+                                button.btn.btn-primary(type="submit" name="submit_add") Add
+
+            .container
+                .row
+                    .col-12 
+                        .card 
+                            .card-body 
+                                h3 Requests
+                                button#btnTriggerAddModal.btn.btn-success(type="button") Add Request
+                                table#tblRequests.table.table-striped.mt-3 
+                                    thead 
+                                        tr 
+                                            th #
+                                            th Request desc.
+                                            th Blood type
+                                            th Units
+                                            th Status
+                                            th Actions 
+                                    tbody 
+                    
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/bs5_modals.js")
+        script(src="/custom/js/user_requests.js")

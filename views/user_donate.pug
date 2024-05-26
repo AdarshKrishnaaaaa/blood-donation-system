@@ -1,0 +1,142 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(
+            content="width=device-width, initial-scale=1" 
+            name="viewport"
+            )
+        title DonateRED
+        link(
+            rel="stylesheet" 
+            href="/bootstrap/css/bootstrap.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/fonts.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/materialdesignicons.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/custom/css/common.css"
+            )
+    body
+        span#resp.hidden= resp 
+        span#user.hidden= user
+        include includes/bs5_modals.pug
+        .banner
+            include includes/user_navbar.pug
+            .container
+                .row
+                    .col-12
+                        form#frmAddDonation(method="post" action="/user/donate" onsubmit="return ValidateDonate();")
+                            .card.mt-5
+                                .card-body
+                                    h2 Blood Donation Form
+                                    .row.p-4
+                                        .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                                            .form-group.mt-4.mb-2
+                                                label(for="tbNumUnits") No. of units
+                                                input#tbNumUnits.form-control.form-control-sm(name="numunits" type="number" value="0" min="0")
+                                            .form-group.mb-2
+                                                label(for="tbNumBloodDonations") Total no. of blood donations
+                                                input#tbNumBloodDonations.form-control.form-control-sm(name="numblooddonats" readonly="" type="text")
+                                            .form-check.mb-3
+                                                input#cbEaten4h.form-check-input(name="eat4h" type="checkbox")
+                                                label.form-check-label(for="cbEaten4h") Have you consumed food in the last 4 hours?
+                                            .form-check.mb-3
+                                                input#cbSlp6h.form-check-input(name="slp6h" type="checkbox")
+                                                label.form-check-label(for="cbSlp6h") Have you slept for atleast 6 hours last night?
+                                            .form-check.mb-3
+                                                input#cbFev1w.form-check-input(name="fev1w" type="checkbox")
+                                                label.form-check-label(for="cbFev1w")
+                                                | Have you been infected with fever/cold/cough during the
+                                                |   past one week?
+                                            .form-check.mb-3
+                                                input#cbSrg12m.form-check-input(name="srg12m" type="checkbox")
+                                                label.form-check-label(for="cbSrg12m")
+                                                | Have you been subjected to surgery or blood transfusion
+                                                |   in the last 12 months?
+                                            .form-check.mb-3
+                                                input#cbTt1w.form-check-input(name="tat1w" type="checkbox")
+                                                label.form-check-label(for="cbTt1w") Have you had a tattoo in the last one week?
+                                            .form-group.mb-3
+                                                label.form-label
+                                                | Have you consumed any of the following medicines in the
+                                                |   last one week?
+                                                .row
+                                                    .form-check.mb-3.col-sm-4.ps-5
+                                                        input#cbAb1w.form-check-input(name="ab1w" type="checkbox")
+                                                        label.form-check-label(for="cbAb1w") Ant-biotics
+                                                    .form-check.mb-3.col-sm-4
+                                                        input#cbAsp1w.form-check-input(name="asp1w" type="checkbox")
+                                                        label.form-check-label(for="cbAsp1w") Aspirin
+                                                    .form-check.mb-3.col-sm-4
+                                                        input#cbTet1w.form-check-input(name="tet1w" type="checkbox")
+                                                        label.form-check-label(for="cbTet1w") Tetanus shot
+                                            .form-check.mb-3
+                                                input#cbAidsPrb.form-check-input(name="aidsprb" type="checkbox")
+                                                label.form-check-label(for="cbAidsPrb") Have you been part of any activities that may probably result in you catching HIV-AIDS?
+                                            .form-check.mb-3
+                                                input#cbCntMeds.form-check-input(name="cntmeds" type="checkbox")
+                                                label.form-check-label(for="cbCntMeds") Do you take any medicines regularly?
+                                            .form-check.mb-3
+                                                input#cbSbsAbs.form-check-input(name="sbsabs" type="checkbox")
+                                                label.form-check-label(for="cbSbsAbs") Do you consume alcoholic/narcotic substances?
+                                            
+                                        .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                                            
+                                            .form-check.mb-3
+                                                input#cbJndc1y.form-check-input(name="jndc1y" type="checkbox")
+                                                label.form-check-label(for="cbJndc1y") Have you had Jaundice in the las 12 months?
+                                            .form-check.mb-3
+                                                input#cbOsKlm3m.form-check-input(name="osklm3m" type="checkbox")
+                                                label.form-check-label(for="cbOsKlm3m") Have you been outside kerala in the last three months?
+                                            .form-check.mb-3
+                                                input#cbUnhInj.form-check-input(name="unhinj" type="checkbox")
+                                                label.form-check-label(for="cbCntMeds") Do you have any unhealed wounds/injuries?
+                                            .form-check.mb-3.femcb
+                                                input#cbFmMns.form-check-input(name="fmmns" type="checkbox")
+                                                label.form-check-label(for="cbFmMns") Are you currently having your menstrual periods?
+                                            .form-check.mb-3.femcb
+                                                input#cbFmPrgnt.form-check-input(name="fmprgnt" type="checkbox")
+                                                label.form-check-label(for="cbFmPrgnt") At the time of filling this application, are you pregnant?
+                                            .form-check.mb-3.femcb
+                                                input#cbFmAbrt6m.form-check-input(name="fmabrt6m" type="checkbox")
+                                                label.form-check-label(for="cbFmAbrt6m") Have you had any abortion in the last 6 months?
+                                            .form-check.mb-3.femcb
+                                                input#cbFmBby1y.form-check-input(
+                                                name="fmbby1y" 
+                                                type="checkbox"
+                                                )
+                                                label.form-check-label(for="cbFmBby1y") Do you have a baby under one year age?
+
+                                            .form-group.mb-3
+                                                label(for="tbDonateDate") Date of donation
+                                                input#tbDonateDate.form-control.form-control-sm(
+                                                    name="dondate"                                                     
+                                                    type="date"
+                                                    )
+                                            .form-check.mt-5
+                                                input#cbIAgree.form-check-input.form-check-input-lg(
+                                                name="iagree" 
+                                                type="checkbox"
+                                                )
+                                                label.form-check-label(for="cbFmPrgnt")
+                                                b
+                                                    | I hereby declare that the above given information about my medical status is true to my knowledge, and if found false, I will be subjected to legal prosecution.
+
+                                                .invalid-feedback You must declare these informations are true before submitting.
+                                .card-footer
+                                    button.btn.btn-primary.btn-lg.float-end.w-25(
+                                        name="submit_add" 
+                                        type="submit"
+                                        ) Submit
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/bs5_modals.js")
+        script(src="/custom/js/user_nav.js")
+        script(src="/custom/js/user_donate.js")

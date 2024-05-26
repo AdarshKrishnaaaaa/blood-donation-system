@@ -1,0 +1,86 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        title DonateRED Blood Camp - Login
+        link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/fonts/fonts.css")
+        link(rel="stylesheet" href="/fonts/materialdesignicons.min.css")
+        link(rel="stylesheet" href="/custom/css/common.css")
+    body
+        span#resp.hidden= resp
+        include includes/bs5_modals.pug
+        .banner
+            nav.navbar.navbar-expand-lg(style="background-color: rgba(0, 0, 0, 0)")
+                .container
+                    a.navbar-brand(href="#")
+                        img(alt="nisha logo" src="/media/bloodcamp-logo.svg")
+                        br
+                        | Donate 
+                        b RED
+                        br
+                        small Blood Camp
+                    button.navbar-toggler(aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarSupportedContent" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button")
+                        span.navbar-toggler-icon
+                    #navbarSupportedContent.collapse.navbar-collapse
+                        ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+                            li.nav-item
+                                a.nav-link.active(href="#" aria-current="page") Home
+                            li.nav-item
+                                a.nav-link(href="#") About Us
+                            li.nav-item
+                                a.nav-link(href="#") Programmes
+                            li.nav-item
+                                a.nav-link(href="#") Contact Us
+                            li.nav-item.dropdown
+                                a.nav-link.dropdown-toggle(aria-expanded="false" data-bs-toggle="dropdown" role="button" href="#") Don't have an account
+                                ul.dropdown-menu.dropdown-menu-end
+                                    li
+                                        a.dropdown-item(href="signup") SignUp
+
+            .container
+                .row
+                    .col-lg-6
+                        .motto
+                            | Share the Gift of Life: Unite, Donate, Save.
+                            br
+                            button.btn.btn-primary.btn-lg Donate
+                    .col-lg-6
+                        form#frmLogin(method="post" action="/user/login" onsubmit="return ValidateLogin();")
+                            .card.shadow-sm(style="margin-top: 12%")
+                                .card-header.p-3
+                                    h4 Login
+                                .card-body
+                                    .form-group.mt-5.mb-3
+                                        label.form-label(for="tbMobile") Mobile
+                                        input#tbMobile.form-control(
+                                            placeholder="e.g: 9876543210" 
+                                            type="text"
+                                            name="mobile"
+                                            )
+                                        .invalid-feedback Use your mobile phone to login.
+                                    .form-group.mb-3
+                                        label.form-label(for="tbPasswd") Password
+                                        input#tbPasswd.form-control(
+                                            name="passwd" 
+                                            type="password"
+                                            placeholder="Your password"
+                                            )
+                                        .invalid-feedback Type in your secret password to login.
+                                    .form-check.mb-3
+                                        input#flexCheckDefault.form-check-input(type="checkbox")
+                                        label.form-check-label(for="flexCheckDefault") Remember me.
+                                    .form-group.p-2(style="margin-bottom: 25px")
+                                        br
+                                        a(href="#") Forgot password?
+                                .card-footer
+                                    .form-group
+                                    button.btn.btn-primary.btn-lg.w-100(type="submit" name="submit_login")
+                                        span.mdi.mdi-login
+                                        | &nbsp;Login
+        
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/bs5_modals.js")
+        script(src="/custom/js/user_login.js")

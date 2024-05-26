@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        title DonateRED - Admin Blood Requests
+        link(rel="stylesheet" href="/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/fonts/fonts.css")
+        link(rel="stylesheet" href="/fonts/materialdesignicons.min.css")
+        link(rel="stylesheet" href="/custom/css/common.css")
+    body
+        include includes/bs5_modals
+        span#resp.hidden= resp
+
+        .banner
+            include includes/admin_navbar.pug
+            
+            .container
+                .row 
+                    .col-12 
+                        .card.mt-5 
+                            .card-body 
+                                h3 Pending Requests
+                                table#tblRequests.table.table-striped.mt-3 
+                                    thead 
+                                        tr 
+                                            th #
+                                            th User
+                                            th Request 
+                                            th Blood type 
+                                            th Units requested 
+                                            th Request time 
+                                            th Status 
+                                            th Actions 
+                                    tbody
+                
+                    
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/bs5_modals.js")
+        script(src="/custom/js/admin_requests.js")

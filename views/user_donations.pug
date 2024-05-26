@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(
+            content="width=device-width, initial-scale=1" 
+            name="viewport"
+            )
+        title DonateRED
+        link(
+            rel="stylesheet" 
+            href="/bootstrap/css/bootstrap.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/fonts.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/fonts/materialdesignicons.min.css"
+            )
+        link(
+            rel="stylesheet" 
+            href="/custom/css/common.css"
+            )
+    body
+        span#resp.hidden= resp 
+        span#user.hidden= user
+        span#donations.hidden= donations
+        include includes/bs5_modals.pug
+        .banner
+            include includes/user_navbar.pug
+            .container
+                .row
+                    .col-12
+                        .card 
+                            .card-body 
+                                h3 Donation Applications 
+                                table#tblDonations.table.table-striped(style="width:100%")
+                                    thead
+                                        tr
+                                            th Name
+                                            th Blood Type
+                                            th Units
+                                            th Med. Status
+                                            th Status
+                                            th Actions
+                                    tbody
+
+        script(src="/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="/jquery/jquery.min.js")
+        script(src="/custom/js/bs5_modals.js")
+        script(src="/custom/js/user_nav.js")
+        script(src="/custom/js/user_donations.js")

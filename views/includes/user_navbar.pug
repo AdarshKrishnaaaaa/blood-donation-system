@@ -1,0 +1,48 @@
+nav#userNav.navbar.navbar-expand-lg(style="background-color: rgba(0, 0, 0, 0)")
+    .container
+        a.navbar-brand(href="#")
+            img(
+                alt="nisha logo" 
+                src="/media/bloodcamp-logo.svg"
+                )
+            br
+            | Donate 
+            b RED
+            br
+            small Blood Camp
+        button.navbar-toggler(
+            aria-label="Toggle navigation" 
+            aria-expanded="false" 
+            aria-controls="navbarSupportedContent" 
+            data-bs-target="#navbarSupportedContent" 
+            data-bs-toggle="collapse" 
+            type="button"
+            )
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+                li.nav-item
+                    a.nav-link.active(
+                        href="#" 
+                        aria-current="page"
+                        ) Home
+                li.nav-item
+                    a.nav-link(href="#") About Us
+                li.nav-item
+                    a.nav-link(href="#") Programmes
+                li.nav-item
+                    a.nav-link(href="#") Contact Us
+                li.nav-item.dropdown
+                    a#miUser.nav-link.dropdown-toggle(
+                        aria-expanded="false" 
+                        data-bs-toggle="dropdown" 
+                        role="button" 
+                        href="#"
+                        ) User
+                    ul.dropdown-menu.dropdown-menu-end
+                        li
+                            a.dropdown-item(href="/user/donations") Donations
+                        li
+                            a.dropdown-item(href="#") Account Settings
+                        li
+                            a.dropdown-item(href="/user/logout") Logout
